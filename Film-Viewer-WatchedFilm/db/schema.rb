@@ -15,13 +15,21 @@ ActiveRecord::Schema.define(version: 20170615164302) do
   create_table "viewers", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.integer "watched_film_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["watched_film_id"], name: "index_viewers_on_watched_film_id"
   end
 
   create_table "watched_films", force: :cascade do |t|
+    t.integer "viewer_id"
+    t.integer "film_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "films", force: :cascade do |t|
+    t.string "title"
+    t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
